@@ -139,7 +139,7 @@ const plugins = () => {
 		new BrowserSyncPlugin(
 			{
 				open: 'external',
-				host: 'yuor host',
+				host: 'your host',
 				port: 3000,
 				proxy: 'http://your-proxy',
 				ghostMode: false,
