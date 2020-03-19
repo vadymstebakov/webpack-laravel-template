@@ -40,6 +40,7 @@ const styleLoaders = () => {
 			options: {
 				hmr: isDev,
 				reloadAll: true,
+				publicPath: '../',
 			},
 		},
 		{
@@ -67,14 +68,13 @@ const styleLoaders = () => {
 };
 
 // File loaders
-const fileLoaders = (outputPath, publicPath) => {
+const fileLoaders = () => {
 	const loaders = [
 		{
 			loader: 'file-loader',
 			options: {
-				name: '[name].[ext]',
-				outputPath,
-				publicPath,
+				esModule: false,
+				name: '[path][name].[ext]',
 			},
 		},
 	];
@@ -199,58 +199,12 @@ module.exports = {
 			{
 				test: regexImages,
 				include: /images/,
-				use: fileLoaders(
-					(file, resourcePath, context) => {
-						const relativePath = path.relative(context, resourcePath);
-
-						if (/svg/i.test(relativePath)) {
-							return `images/svg/${file}`;
-						}
-
-						return `images/${file}`;
-					},
-					(file, resourcePath, context) => {
-						const relativePath = path.relative(context, resourcePath);
-
-						if (/svg/i.test(relativePath)) {
-							return `../images/svg/${file}`;
-						}
-
-						return `../images/${file}`;
-					}
-				),
+				use: fileLoaders(),
 			},
 			{
 				test: /\.(ttf|eot|woff2|woff|svg)$/i,
 				include: /fonts/,
-				use: fileLoaders(
-					(file, resourcePath, context) => {
-						const relativePath = path.relative(context, resourcePath);
-
-						if (/Roboto/i.test(relativePath)) {
-							return `fonts/Roboto/${file}`;
-						}
-
-						if (/Arial/i.test(relativePath)) {
-							return `fonts/Arial/${file}`;
-						}
-
-						return `fonts/${file}`;
-					},
-					(file, resourcePath, context) => {
-						const relativePath = path.relative(context, resourcePath);
-
-						if (/Roboto/i.test(relativePath)) {
-							return `../fonts/Roboto/${file}`;
-						}
-
-						if (/Arial/i.test(relativePath)) {
-							return `fonts/Arial/${file}`;
-						}
-
-						return `../fonts/${file}`;
-					}
-				),
+				use: fileLoaders(),
 			},
 		],
 	},
