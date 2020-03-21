@@ -10,8 +10,8 @@ html {
 }
 
 body {
-	scroll-behavior: smooth;
-	text-rendering: optimizeSpeed;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
 }
 
 body,
@@ -33,32 +33,32 @@ dd {
 
 ul[class],
 ol[class] {
-	padding: 0;
-	list-style: none;
+    padding: 0;
+    list-style: none;
 }
 
 a {
-	cursor: pointer;
-	color: inherit;
+    cursor: pointer;
+    color: inherit;
     background-color: transparent;
 }
 
 a:not([class]) {
-	text-decoration-skip-ink: auto;
+    text-decoration-skip-ink: auto;
 }
 
 img {
-	max-width: 100%;
-	display: block;
+    max-width: 100%;
+    display: block;
 }
 
 @media (prefers-reduced-motion: reduce) {
-	* {
-		animation-duration: 0.01ms !important;
-		animation-iteration-count: 1 !important;
-		transition-duration: 0.01ms !important;
-		scroll-behavior: auto !important;
-	}
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 main {

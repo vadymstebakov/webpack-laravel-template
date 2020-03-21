@@ -8,12 +8,12 @@ SymbolSprite.inject('./../images/symbol-sprite/symbol-sprite.html');
 
 // Resize function
 (function fnResize() {
-	let doit;
+    let doit;
 
-	function resized() {}
+    function resized() {}
 
-	window.onresize = () => {
-		clearTimeout(doit);
-		doit = setTimeout(resized, 50);
-	};
+    window.onresize = () => {
+        clearTimeout(doit);
+        doit = setTimeout(resized, 50);
+    };
 })();

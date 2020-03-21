@@ -1,8 +1,8 @@
 {
-	"singleQuote": true,
-	"tabWidth": 2,
-	"useTabs": true,
-	"trailingComma": "es5",
-	"proseWrap": "never",
-	"bracketSpacing": false
+    "singleQuote": true,
+    "tabWidth": 4,
+    "useTabs": false,
+    "trailingComma": "es5",
+    "proseWrap": "never",
+    "bracketSpacing": false
 }

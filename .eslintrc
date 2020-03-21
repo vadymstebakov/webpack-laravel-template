@@ -1,26 +1,31 @@
 {
 	"parser": "babel-eslint",
-    "env": {
+	"env": {
 		"browser": true,
 		"node": true,
-        "commonjs": true,
+		"commonjs": true,
 		"es6": true,
 		"jquery": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "ecmaVersion": 2018,
-		"sourceType": "module"
 	},
-    "rules": {
-        "indent": 0,
-        "linebreak-style": 0,
-        "quotes": [2, "single"],
-        "semi": [2, "always"],
-		"no-empty": 0,
-		"no-mixed-spaces-and-tabs": 0,
-		"no-unused-vars": "warn",
-		"no-console": "warn",
-		"no-extra-semi": "warn"
+	"extends": "eslint:recommended",
+	"parserOptions": {
+		"ecmaVersion": 2020
+	},
+	"globals": {
+		"BigInt": true
+	},
+	"rules": {
+		"indent": ["warn", 4],
+		"linebreak-style": ["warn", "unix"],
+		"quotes": ["warn", "single"],
+		"semi": ["warn", "always"],
+		"no-loop-func": ["error"],
+		"no-empty": ["error", {"allowEmptyCatch": true}],
+		"comma-style": ["warn", "last"],
+		"space-before-blocks": ["warn", "always"],
+		"no-mixed-spaces-and-tabs": ["warn"],
+		"no-unused-vars": ["error"],
+		"no-extra-semi": ["error"],
+		"no-console": ["warn"]
 	}
 }
