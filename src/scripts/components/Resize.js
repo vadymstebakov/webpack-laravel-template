@@ -2,10 +2,16 @@ import {debounce} from '../auxiliary/customMethods';
 
 export default class Resize {
     static _resized() {
-        // call your functions
+        return () => {
+            // call your functions
+        };
     }
 
     static init() {
-        window.addEventListener('resize', debounce(Resize._resized, 50), false);
+        window.addEventListener(
+            'resize',
+            debounce(Resize._resized(), 50),
+            false
+        );
     }
 }
