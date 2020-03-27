@@ -83,7 +83,7 @@ const fileLoaders = () => {
 };
 
 // Babel options
-const babelOptions = preset => {
+const babelOptions = (preset) => {
     const opts = {
         presets: ['@babel/preset-env'],
     };
@@ -110,7 +110,8 @@ const jsLoaders = () => {
 };
 
 // Filename
-const filename = ext => (isDev ? `[name].${ext}` : `[name].[hash].min.${ext}`);
+const filename = (ext) =>
+    isDev ? `[name].${ext}` : `[name].[hash].min.${ext}`;
 
 // Plugins
 const plugins = () => {
@@ -181,7 +182,6 @@ module.exports = {
         main: [
             '@babel/polyfill',
             'element-closest-polyfill',
-            'parent-node-prepend-polyfill',
             './scripts/index.js',
         ],
     },
