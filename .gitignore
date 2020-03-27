@@ -3,6 +3,7 @@
 .vscode/
 .idea/
 node_modules/
+yarn-error.lock
 yarn.lock
 package-lock.json
 /dist/

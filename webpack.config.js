@@ -143,6 +143,7 @@ const plugins = () => {
                 port: 3000,
                 proxy: 'http://your-proxy',
                 ghostMode: false,
+                // tunnel: true,
                 files: [
                     {
                         match: ['./src'],
@@ -181,11 +182,11 @@ module.exports = {
             '@babel/polyfill',
             'element-closest-polyfill',
             'parent-node-prepend-polyfill',
-            './js/index.js',
+            './scripts/index.js',
         ],
     },
     output: {
-        filename: `js/${filename('js')}`,
+        filename: `scripts/${filename('js')}`,
         path: path.resolve(__dirname, 'dist'),
     },
     optimization: optimization(),
@@ -200,7 +201,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                include: /js/,
+                include: /scripts/,
                 use: jsLoaders(),
             },
             {

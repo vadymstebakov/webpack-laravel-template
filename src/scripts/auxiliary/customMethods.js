@@ -27,11 +27,13 @@ export const throttle = (cb, delay) => {
 };
 
 export const rAF = cb => {
+    let globalID;
     let ticking = false;
 
     return function(...args) {
         if (!ticking) {
-            requestAnimationFrame(() => {
+            cancelAnimationFrame(globalID);
+            globalID = requestAnimationFrame(() => {
                 ticking = false;
                 return cb(...args);
             });
@@ -39,3 +41,6 @@ export const rAF = cb => {
         }
     };
 };
+
+export const prependChild = (parent, child) =>
+    parent.insertBefore(child, parent.firstElementChild);

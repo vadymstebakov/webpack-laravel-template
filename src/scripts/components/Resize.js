@@ -1,4 +1,4 @@
-import {debounce} from './customMethods';
+import {debounce} from '../auxiliary/customMethods';
 
 export default class Resize {
     static _resized() {
