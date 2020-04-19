@@ -5,7 +5,7 @@ import Resize from './components/Resize';
 console.log(json);
 
 // Inject symbol sprite
-SymbolSprite.inject('./../images/symbol-sprite/symbol-sprite.html');
+SymbolSprite.inject('./../images/symbol-sprite/symbol-sprite.html', 24);
 
 // init resize
 Resize.init();
