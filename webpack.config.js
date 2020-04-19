@@ -23,10 +23,7 @@ const optimization = () => {
     };
 
     if (isProd) {
-        config.minimizer = [
-            new OptimizeCssAssetWebpackPlugin(),
-            new TerserWebpackPlugin(),
-        ];
+        config.minimizer = [new OptimizeCssAssetWebpackPlugin(), new TerserWebpackPlugin()];
     }
 
     return config;
@@ -83,7 +80,7 @@ const fileLoaders = () => {
 };
 
 // Babel options
-const babelOptions = (preset) => {
+const babelOptions = preset => {
     const opts = {
         presets: ['@babel/preset-env'],
     };
@@ -110,19 +107,27 @@ const jsLoaders = () => {
 };
 
 // Filename
-const filename = (ext) =>
-    isDev ? `[name].${ext}` : `[name].[hash].min.${ext}`;
+const filename = ext => (isDev ? `[name].${ext}` : `[name].[hash].min.${ext}`);
 
 // Plugins
 const plugins = () => {
     const base = [
         new CleanWebpackPlugin(),
-        new CopyWebpackPlugin([
+        new CopyWebpackPlugin(
+            [
+                {
+                    from: path.resolve(__dirname, 'src/images/**/**.*'),
+                    to: path.resolve(__dirname, 'dist'),
+                },
+                {
+                    from: path.resolve(__dirname, 'src/fonts/**/**.*'),
+                    to: path.resolve(__dirname, 'dist'),
+                },
+            ],
             {
-                from: path.resolve(__dirname, 'src/images/**/**.*'),
-                to: path.resolve(__dirname, 'dist'),
-            },
-        ]),
+                copyUnmodified: true,
+            }
+        ),
         new MiniCssExtractPlugin({
             filename: `styles/${filename('css')}`,
         }),
@@ -151,14 +156,8 @@ const plugins = () => {
                     {
                         match: ['./src'],
                         fn(event) {
-                            if (
-                                event === 'change' ||
-                                event === 'add' ||
-                                event === 'unlink'
-                            ) {
-                                const bs = require('browser-sync').get(
-                                    'bs-webpack-plugin'
-                                );
+                            if (event === 'change' || event === 'add' || event === 'unlink') {
+                                const bs = require('browser-sync').get('bs-webpack-plugin');
                                 bs.reload();
                             }
                         },
@@ -181,11 +180,7 @@ module.exports = {
     context: path.resolve(__dirname, 'src'),
     mode: 'development',
     entry: {
-        main: [
-            '@babel/polyfill',
-            'element-closest-polyfill',
-            './scripts/index.js',
-        ],
+        main: ['@babel/polyfill', 'element-closest-polyfill', './scripts/index.js'],
     },
     output: {
         filename: `scripts/${filename('js')}`,
@@ -208,6 +203,7 @@ module.exports = {
             },
             {
                 test: /\.scss$/i,
+                include: /styles/,
                 use: styleLoaders(),
             },
             {
