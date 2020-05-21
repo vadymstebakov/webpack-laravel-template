@@ -113,21 +113,20 @@ const filename = ext => (isDev ? `[name].${ext}` : `[name].[hash].min.${ext}`);
 const plugins = () => {
     const base = [
         new CleanWebpackPlugin(),
-        new CopyWebpackPlugin(
-            [
+        new CopyWebpackPlugin({
+            patterns: [
                 {
-                    from: path.resolve(__dirname, 'src/images/**/**.*'),
-                    to: path.resolve(__dirname, 'dist'),
+                    from: path.resolve(__dirname, 'src/images/'),
+                    to: 'images/',
+                    force: true,
                 },
                 {
-                    from: path.resolve(__dirname, 'src/fonts/**/**.*'),
-                    to: path.resolve(__dirname, 'dist'),
+                    from: path.resolve(__dirname, 'src/fonts/'),
+                    to: 'fonts/',
+                    force: true,
                 },
             ],
-            {
-                copyUnmodified: true,
-            }
-        ),
+        }),
         new MiniCssExtractPlugin({
             filename: `styles/${filename('css')}`,
         }),
@@ -147,9 +146,9 @@ const plugins = () => {
         new BrowserSyncPlugin(
             {
                 open: 'external',
-                host: 'your host',
+                host: 'wp-dev',
                 port: 3000,
-                proxy: 'http://your-proxy',
+                proxy: 'http://wp-dev',
                 ghostMode: false,
                 // tunnel: true,
                 files: [

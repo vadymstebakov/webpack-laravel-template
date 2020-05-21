@@ -16,7 +16,7 @@
 	},
 	"rules": {
 		"indent": ["warn", 4],
-		"linebreak-style": ["warn", "unix"],
+		"linebreak-style": 0,
 		"quotes": ["warn", "single"],
 		"semi": ["warn", "always"],
 		"no-loop-func": ["error"],
