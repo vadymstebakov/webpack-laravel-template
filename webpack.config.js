@@ -1,10 +1,10 @@
 const path = require('path');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
-const {BundleAnalyzerPlugin} = require('webpack-bundle-analyzer');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const autoprefixer = require('autoprefixer');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
@@ -191,6 +191,8 @@ module.exports = {
     resolve: {
         alias: {
             '@': path.resolve(__dirname, 'src'),
+            '@scripts': path.resolve(__dirname, 'src/scripts'),
+            '@assets': path.resolve(__dirname, 'src/assets'),
         },
     },
     module: {

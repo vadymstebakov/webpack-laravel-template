@@ -1,11 +1,20 @@
+// import * as $ from 'jquery';
 import SymbolSprite from './components/SymbolSprite';
-import json from '../assets/json.json';
+import Popups from './components/Popups';
 import Resize from './components/Resize';
+// import json from '../assets/json.json';
 
-console.log(json);
+// Init symbol sprite
+SymbolSprite.init('./../images/symbol-sprite/symbol-sprite.html', 24);
 
-// Inject symbol sprite
-SymbolSprite.inject('./../images/symbol-sprite/symbol-sprite.html', 24);
-
-// init resize
+// Resize function
 Resize.init();
+
+// Popups
+{
+    const popups = document.querySelectorAll('.popup');
+
+    if (popups.length) {
+        Popups.init(popups);
+    }
+}
