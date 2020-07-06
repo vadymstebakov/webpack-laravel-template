@@ -7,7 +7,7 @@
 		"es6": true,
 		"jquery": true
 	},
-	"extends": "eslint:recommended",
+	"extends": ["eslint:recommended", "google"],
 	"parserOptions": {
 		"ecmaVersion": 2020
 	},
@@ -15,17 +15,26 @@
 		"BigInt": true
 	},
 	"rules": {
-		"indent": ["warn", 4],
-		"linebreak-style": 0,
-		"quotes": ["warn", "single"],
-		"semi": ["warn", "always"],
+        "valid-jsdoc": "off",
+        "require-jsdoc": "off",
+        "object-curly-spacing": "off",
+        "arrow-parens": "off",
+        "linebreak-style": "off",
+        "comma-dangle": "off",
+        "operator-linebreak": "off",
+        "max-len": "off",
+        "spaced-comment": "off",
+        "space-before-function-paren": "off",
+        "no-invalid-this": "off",
+		"quotes": ["error", "single"],
+		"semi": ["error", "always"],
 		"no-loop-func": ["error"],
-		"no-empty": ["error", {"allowEmptyCatch": true}],
-		"comma-style": ["warn", "last"],
-		"space-before-blocks": ["warn", "always"],
-		"no-mixed-spaces-and-tabs": ["warn"],
+		"comma-style": ["error", "last"],
+		"space-before-blocks": ["error", "always"],
+		"no-mixed-spaces-and-tabs": ["error"],
 		"no-unused-vars": ["error"],
 		"no-extra-semi": ["error"],
+		"indent": ["warn", 4],
 		"no-console": ["warn"]
 	}
 }

@@ -1,0 +1,28 @@
+%fixedXY {
+    position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+    bottom: 0;
+}
+
+@include placeholder {
+    opacity: 1;
+    line-height: normal;
+}
+
+.no-scroll {
+	overflow-y: scroll;
+	@extend %fixedXY;
+}
+
+.not-allowed {
+    pointer-events: none !important;
+}
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+    max-width: 1170px;
+    margin: 0 auto;
+}

@@ -1,4 +1,4 @@
-import {debounce} from '../auxiliary/customMethods';
+import { debounce } from '@scripts/helpers/customMethods';
 
 export default class Resize {
     static _resized() {
@@ -8,10 +8,6 @@ export default class Resize {
     }
 
     static init() {
-        window.addEventListener(
-            'resize',
-            debounce(Resize._resized(), 50),
-            false
-        );
+        window.addEventListener('resize', debounce(Resize._resized(), 50), false);
     }
 }
