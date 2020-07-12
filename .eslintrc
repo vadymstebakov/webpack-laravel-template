@@ -1,20 +1,20 @@
 {
-	"parser": "babel-eslint",
-	"env": {
-		"browser": true,
-		"node": true,
-		"commonjs": true,
-		"es6": true,
-		"jquery": true
-	},
-	"extends": ["eslint:recommended", "google"],
-	"parserOptions": {
-		"ecmaVersion": 2020
-	},
-	"globals": {
-		"BigInt": true
-	},
-	"rules": {
+    "parser": "babel-eslint",
+    "env": {
+        "browser": true,
+        "node": true,
+        "commonjs": true,
+        "es6": true,
+        "jquery": true
+    },
+    "extends": ["eslint:recommended", "google"],
+    "parserOptions": {
+        "ecmaVersion": 2020
+    },
+    "globals": {
+        "BigInt": true
+    },
+    "rules": {
         "valid-jsdoc": "off",
         "require-jsdoc": "off",
         "object-curly-spacing": "off",
@@ -22,19 +22,21 @@
         "linebreak-style": "off",
         "comma-dangle": "off",
         "operator-linebreak": "off",
-        "max-len": "off",
         "spaced-comment": "off",
         "space-before-function-paren": "off",
         "no-invalid-this": "off",
-		"quotes": ["error", "single"],
-		"semi": ["error", "always"],
-		"no-loop-func": ["error"],
-		"comma-style": ["error", "last"],
-		"space-before-blocks": ["error", "always"],
-		"no-mixed-spaces-and-tabs": ["error"],
-		"no-unused-vars": ["error"],
-		"no-extra-semi": ["error"],
-		"indent": ["warn", 4],
-		"no-console": ["warn"]
-	}
+        "max-len": ["error", { "code": 120 }],
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"],
+        "no-loop-func": ["error"],
+        "comma-style": ["error", "last"],
+        "space-before-blocks": ["error", "always"],
+        "no-mixed-spaces-and-tabs": ["error"],
+        "no-unused-vars": ["error"],
+        "no-extra-semi": ["error"],
+        "no-console": ["warn"],
+        "one-var": "off",
+        "no-debugger": "warn",
+        "indent": ["error", 4, { "SwitchCase": 1, "VariableDeclarator": 1 }]
+    }
 }
