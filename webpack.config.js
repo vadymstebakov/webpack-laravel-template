@@ -1,4 +1,6 @@
 const path = require('path');
+const { address } = require('ip');
+const chalk = require('chalk');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -10,9 +12,13 @@ const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const PhpManifestPlugin = require('webpack-php-manifest');
 
+// eslint-disable-next-line no-console
+const log = console.log;
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 const regexImages = /\.(png|jpe?g|svg|gif)$/i;
+
+log(chalk.black.bgWhite.bold(`### Your IP: ${chalk.red.underline(address())}`));
 
 // Optimization
 const optimization = () => {
@@ -158,6 +164,7 @@ const plugins = () => {
                             if (event === 'change' || event === 'add' || event === 'unlink') {
                                 const bs = require('browser-sync').get('bs-webpack-plugin');
                                 bs.reload();
+                                log(chalk.black.bgWhite.bold(`### Your IP: ${chalk.red.underline(address())}`));
                             }
                         },
                     },
