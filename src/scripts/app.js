@@ -10,7 +10,6 @@ SymbolSprite.init('./../images/symbol-sprite/symbol-sprite.html', 24);
 // Popups
 {
     const popups = document.querySelectorAll('.popup');
-
     if (popups.length) {
         Popups.init(popups);
     }
