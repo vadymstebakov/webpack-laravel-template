@@ -7,33 +7,25 @@ export default class Popups {
                 popup.removeAttribute('style');
             });
         });
-
         document.body.addEventListener('click', e => Popups._delegation(e));
     }
 
     static _delegation(e) {
         let target = e.target;
-
         if (target.correspondingUseElement) {
             target = target.correspondingUseElement;
         }
-
-        const el =
-            target.closest('.js-popup-btn') || target.closest('.popup__overlay') || target.closest('.js-popup-close');
-
+        const el = target.closest('[data-popup-open]') || target.closest('[data-popup-close]');
         if (!el) return;
-
         e.preventDefault();
-        const openedPopup = document.querySelector('.js-popup-open');
-
-        if (el.classList.contains('js-popup-close') || el.classList.contains('popup__overlay')) {
+        const openedPopup = document.querySelector('.js-popup-opened');
+        const elDataset = el.dataset;
+        if ('popupClose' in elDataset) {
             visibleScroll();
-
-            openedPopup && openedPopup.classList.remove('js-popup-open');
-        } else if (el.classList.contains('js-popup-btn')) {
+            openedPopup && openedPopup.classList.remove('js-popup-opened');
+        } else if ('popupOpen' in elDataset) {
             hiddenScroll();
-
-            document.getElementById(`${el.dataset.popup}`).classList.add('js-popup-open');
+            document.getElementById(`${elDataset.popup}`).classList.add('js-popup-opened');
         }
     }
 }

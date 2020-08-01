@@ -4,6 +4,7 @@ export default class Resize {
     static _resized() {
         return () => {
             // call your functions
+            console.log('test');
         };
     }
 

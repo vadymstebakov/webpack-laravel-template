@@ -1,7 +1,7 @@
 // import * as $ from 'jquery';
-import SymbolSprite from '@components/SymbolSprite';
-import Popups from '@components/Popups';
-import Resize from '@components/Resize';
+import SymbolSprite from '@components/UI/SymbolSprite';
+import Popups from '@components/UI/Popups';
+import Resize from '@helpers/Resize';
 // import json from '@assets/json.json';
 
 // Init symbol sprite
