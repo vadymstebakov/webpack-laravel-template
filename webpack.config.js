@@ -199,6 +199,8 @@ module.exports = {
         alias: {
             '@': path.resolve(__dirname, 'src'),
             '@scripts': path.resolve(__dirname, 'src/scripts'),
+            '@helpers': path.resolve(__dirname, 'src/scripts/helpers'),
+            '@components': path.resolve(__dirname, 'src/scripts/components'),
             '@assets': path.resolve(__dirname, 'src/assets'),
         },
     },

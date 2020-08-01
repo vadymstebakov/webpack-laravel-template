@@ -1,4 +1,4 @@
-import { hiddenScroll, visibleScroll } from '@scripts/helpers/utils';
+import { hiddenScroll, visibleScroll } from '@helpers/utils';
 
 export default class Popups {
     static init(popups) {

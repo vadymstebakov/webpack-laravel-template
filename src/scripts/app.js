@@ -1,14 +1,11 @@
 // import * as $ from 'jquery';
-import SymbolSprite from './components/SymbolSprite';
-import Popups from './components/Popups';
-import Resize from './components/Resize';
-// import json from '../assets/json.json';
+import SymbolSprite from '@components/SymbolSprite';
+import Popups from '@components/Popups';
+import Resize from '@components/Resize';
+// import json from '@assets/json.json';
 
 // Init symbol sprite
 SymbolSprite.init('./../images/symbol-sprite/symbol-sprite.html', 24);
-
-// Resize function
-Resize.init();
 
 // Popups
 {
@@ -18,3 +15,6 @@ Resize.init();
         Popups.init(popups);
     }
 }
+
+// Resize function
+Resize.init();
