@@ -1,4 +1,4 @@
-import { debounce } from '@scripts/helpers/utils';
+import { debounce } from '@helpers/utils';
 
 export default class Resize {
     static _resized() {
