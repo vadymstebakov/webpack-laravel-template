@@ -8,7 +8,7 @@
     opacity: 0;
     z-index: -1;
     visibility: hidden;
-    transition: opacity 0.3s 0s, visibility 0s 0.3s, z-index 0s 0.3s;
+    @include fade-out(0.3s, 0.3s);
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     display: flex;
@@ -18,7 +18,7 @@
         opacity: 1;
         z-index: 20;
         visibility: visible;
-        transition: opacity 0.3s 0s, visibility 0s 0s, z-index 0s 0s;
+        @include fade-in(0.3s);
 
         .popup__overlay {
             opacity: 1;

@@ -35,6 +35,18 @@ const optimization = () => {
     return config;
 };
 
+// SVG Sprite
+const putSVGSprite = () => {
+    return new HTMLWebpackPlugin({
+        filename: 'images/symbol-sprite/symbol-sprite.html',
+        template: './images/symbol-sprite/symbol-sprite.html',
+        inject: false,
+        minify: {
+            collapseWhitespace: isProd,
+        },
+    });
+};
+
 // Style loaders
 const styleLoaders = () => {
     const loaders = [
@@ -133,6 +145,7 @@ const plugins = () => {
                 },
             ],
         }),
+        putSVGSprite(),
         new MiniCssExtractPlugin({
             filename: `styles/${filename('css')}`,
         }),
