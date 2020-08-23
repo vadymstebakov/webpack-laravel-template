@@ -1,16 +1,20 @@
 import { hiddenScroll, visibleScroll } from '@helpers/utils';
 
 export default class Popups {
-    static init(popups) {
+    constructor($popups, options) {
+        this.$popups = $popups;
+    }
+
+    init() {
         window.addEventListener('load', () => {
-            [...popups].forEach(popup => {
+            [...this.$popups].forEach(popup => {
                 popup.removeAttribute('style');
             });
         });
-        document.body.addEventListener('click', e => Popups._delegation(e));
+        document.body.addEventListener('click', e => this._delegation(e));
     }
 
-    static _delegation(e) {
+    _delegation(e) {
         let target = e.target;
         if (target.correspondingUseElement) {
             target = target.correspondingUseElement;
