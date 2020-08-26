@@ -1,13 +1,13 @@
 import { debounce } from '@helpers/utils';
 
 export default class Resize {
-    static _resized() {
+    static _resized(emitter) {
         return () => {
-            // call your functions
+            emitter.emit('page:resized', [document.documentElement.clientWidth, document.documentElement.clientHeight]);
         };
     }
 
-    static init() {
-        window.addEventListener('resize', debounce(Resize._resized(), 50), false);
+    static init(emitter) {
+        window.addEventListener('resize', debounce(Resize._resized(emitter), 50), false);
     }
 }

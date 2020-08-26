@@ -17,7 +17,7 @@
     "author": "Vadym Stebakov <vadim.stebakov.94@gmail.com>",
     "license": "ISC",
     "devDependencies": {
-        "@babel/core": "^7.11.1",
+        "@babel/core": "^7.11.4",
         "@babel/preset-env": "^7.11.0",
         "autoprefixer": "^9.8.6",
         "babel-eslint": "^10.1.0",
@@ -54,7 +54,7 @@
         "element-closest-polyfill": "^1.0.2",
         "jquery": "^3.5.1",
         "normalize.css": "^8.0.1",
-        "swiper": "^6.1.1"
+        "swiper": "^6.1.2"
     },
     "browserslist": "> 0.2%, not dead"
 }
