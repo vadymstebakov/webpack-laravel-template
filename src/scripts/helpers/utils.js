@@ -9,7 +9,7 @@ export const debounce = (cb, interval = 0) => {
     return function (...args) {
         clearTimeout(debounceTimeoutId);
         debounceTimeoutId = null;
-        debounceTimeoutId = setTimeout(() => cb.apply(null, [...args]), interval);
+        debounceTimeoutId = setTimeout(() => cb.apply(this, args), interval);
     };
 };
 
