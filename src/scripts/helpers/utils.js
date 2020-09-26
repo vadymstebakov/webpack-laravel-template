@@ -41,6 +41,11 @@ export const rAF = cb => {
 
 export const prependChild = (parent, child) => parent.insertBefore(child, parent.firstElementChild);
 
+export const findDuplicate = (arr, amount) =>
+    arr.filter((item, _, list) => list.filter(_item => _item === item).length > amount);
+
+export const removeDuplicate = arr => [...new Set(arr)];
+
 export const getScrollbarWidth = () => {
     const outer = document.createElement('div');
     outer.style.visibility = 'hidden';
