@@ -168,7 +168,7 @@ const plugins = () => {
             {
                 open: 'external',
                 host: 'wp-dev',
-                port: 3000,
+                port: 8080,
                 proxy: 'http://wp-dev',
                 ghostMode: false,
                 // tunnel: true,
