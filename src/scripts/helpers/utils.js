@@ -1,8 +1,31 @@
-export const asyncForEach = (arr, cb, delay = 0) => {
-    arr.forEach((item, index, array) => {
-        setTimeout(cb, delay, [item, index, array]);
-    });
+// eslint-disable-next-line no-console
+export const { warn, error } = console;
+
+export const asyncEach = (array, cb, interval = 10) => {
+    let time = Date.now();
+    let i = 0;
+    const last = array.length - 1;
+    const next = () => {
+        while (i <= last) {
+            const now = Date.now();
+            const diff = now - time;
+            if (diff > interval) {
+                time = now;
+                setTimeout(next, 0);
+                break;
+            }
+            cb(array[i], i++, array);
+        }
+    };
+    next();
 };
+
+export const findDuplicate = (array, amount) =>
+    array.filter((item, _, list) => list.filter(_item => _item === item).length >= amount);
+
+export const removeDuplicate = array => [...new Set(array)];
+
+export const timeout = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export const debounce = (cb, interval = 0) => {
     let debounceTimeoutId;
