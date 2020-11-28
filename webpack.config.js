@@ -1,13 +1,13 @@
 const path = require('path');
 const { address } = require('ip');
 const chalk = require('chalk');
+const webpack = require('webpack');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetWebpackPlugin = require('optimize-css-assets-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const PhpManifestPlugin = require('webpack-php-manifest');
@@ -18,7 +18,7 @@ const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
 const regexImages = /\.(png|jpe?g|svg|gif)$/i;
 
-log(chalk.black.bgWhite.bold(`### Your IP: ${chalk.red.underline(address())}`));
+isDev ? log(chalk.black.bgWhite.bold(`### Your IP: ${chalk.red.underline(address())}`)) : null;
 
 // Optimization
 const optimization = () => {
@@ -133,6 +133,10 @@ const filename = ext => (isDev ? `[name].${ext}` : `[name].[hash].min.${ext}`);
 const plugins = () => {
     const base = [
         new CleanWebpackPlugin(),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+        }),
         new CopyWebpackPlugin({
             patterns: [
                 {
@@ -174,7 +178,7 @@ const plugins = () => {
                 // tunnel: true,
                 files: [
                     {
-                        match: ['./src'],
+                        match: ['./src', '../resources/views/**/*.php'],
                         fn(event) {
                             if (event === 'change' || event === 'add' || event === 'unlink') {
                                 const bs = require('browser-sync').get('bs-webpack-plugin');
@@ -190,8 +194,6 @@ const plugins = () => {
             }
         ),
     ];
-
-    if (isProd) base.push(new BundleAnalyzerPlugin());
 
     return base;
 };
