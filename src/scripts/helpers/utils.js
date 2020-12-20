@@ -25,7 +25,7 @@ export const findDuplicate = (array, amount) =>
 
 export const removeDuplicate = array => [...new Set(array)];
 
-export const timeout = ms => new Promise(resolve => setTimeout(resolve, ms));
+export const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 export const debounce = (cb, interval = 0) => {
     let debounceTimeoutId;
