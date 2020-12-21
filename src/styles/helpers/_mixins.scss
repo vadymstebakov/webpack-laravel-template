@@ -1,8 +1,8 @@
 // Responsive font-size
-@mixin responsive-fz($maxSize, $minSize, $maxWidth: 1365, $minWidth: 320) {
-    $addSize: $maxSize - $minSize;
-    $maxWidth: $maxWidth - 320;
-    font-size: calc(#{$minSize + px} + #{$addSize} * ((100vw - #{$minWidth + px}) / #{$maxWidth}));
+@mixin responsive-fz($max-size, $min-size, $max-width: 1365, $min-width: 320) {
+    $add-size: $max-size - $min-size;
+    $max-width: $max-width - 320;
+    font-size: calc(#{$min-size + px} + #{$add-size} * ((100vw - #{$min-width + px}) / #{$max-width}));
 }
 
 // Fade-out

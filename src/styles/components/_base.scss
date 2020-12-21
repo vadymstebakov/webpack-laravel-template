@@ -8,7 +8,7 @@ body {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
 .wrap-helper {
@@ -21,13 +21,13 @@ body {
     }
 }
 
-// h1 {
-//     text-align: center;
-//     @include responsiveFz(25, 14, 1199);
-// }
+h1 {
+    @include responsive-fz(25, 14, 1199);
+    text-align: center;
+}
 
-// img {
-//     display: block;
-//     margin: 0 auto;
-//     max-height: 400px;
-// }
+img {
+    display: block;
+    margin: 0 auto;
+    max-height: 400px;
+}
