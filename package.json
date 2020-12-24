@@ -9,7 +9,7 @@
         "build": "cross-env NODE_ENV=production webpack --config configuration/webpack.prod.config.js --mode=production",
         "stats": "cross-env NODE_ENV=stats webpack --config configuration/webpack.prod.config.js --json > stats.json && webpack-bundle-analyzer stats.json",
         "lint:js": "eslint --ext .js src/scripts/",
-        "lint:sass": "sass-lint -v -q"
+        "lint:sass": "sass-lint \"src/styles/**/*.scss\" -v -q"
     },
     "engines": {
         "node": "^12 || >=14"

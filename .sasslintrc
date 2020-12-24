@@ -1,6 +1,6 @@
 files:
     # formatter: stylish
-    include: 'src/styles/**/*.scss'
+    # include: 'src/styles/**/*.scss'
 
 rules:
     # Extends
