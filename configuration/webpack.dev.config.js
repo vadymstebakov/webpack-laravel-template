@@ -23,7 +23,7 @@ module.exports = merge(webpackConfiguration, {
                 online: true,
                 files: [
                     {
-                        match: [environment.paths.source, `${environment.paths.resources}views/**/*.php`],
+                        match: [environment.paths.source, environment.paths.views],
                         fn(event) {
                             if (event === 'change' || event === 'add' || event === 'unlink') {
                                 const bs = require('browser-sync').get('bs-webpack-plugin');
