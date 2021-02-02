@@ -1,25 +1,28 @@
 // MAX-WIDTH --------------------
-@media (max-width: 1199px) {
+@include max-w-lg {
 }
 
-@media (max-width: 991px) {
+@include max-w-md {
 }
 
-@media (max-width: 767px) {
+@include max-w-sm {
 }
 
-@media (max-width: 479px) {
+@include max-w-xs {
 }
 
 // MIN-WIDTH --------------------
-@media (min-width: 480px) {
+@include min-w-sm {
 }
 
-@media (min-width: 768px) {
+@include min-w-md {
 }
 
-@media (min-width: 992px) {
+@include min-w-lg {
 }
 
-@media (min-width: 2000px) {
+@include min-w-xl {
+}
+
+@include min-w-xxl {
 }

@@ -62,6 +62,8 @@ export const rAF = cb => {
     };
 };
 
+export const expirationDateInHours = hours => new Date(new Date().getTime() + hours * 60 * 60 * 1000);
+
 export const prependChild = (parent, child) => parent.insertBefore(child, parent.firstElementChild);
 
 export const getScrollbarWidth = () => {
