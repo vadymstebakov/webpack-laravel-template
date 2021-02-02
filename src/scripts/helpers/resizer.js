@@ -7,13 +7,11 @@ const resized = emitter => {
 };
 
 export const resizer = options => {
-    const fn = debounce(resized(options.emitter));
+    const fn = debounce(resized(options.emitter), options.ms);
 
-    window.addEventListener('resize', fn, options.ms, false);
+    window.addEventListener('resize', fn, false);
 
-    return {
-        destroy() {
-            window.removeEventListener('resize', fn);
-        },
+    return () => {
+        window.removeEventListener('resize', fn);
     };
 };

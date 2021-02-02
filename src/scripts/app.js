@@ -1,7 +1,7 @@
 import { EventEmitter } from '@helpers/EventEmitter';
 import { initSymbolSprite } from '@components/ui/symbolSprite';
 import Popups from '@components/ui/Popups';
-import resizer from '@helpers/resizer';
+import { resizer } from '@helpers/resizer';
 import { sleep } from '@helpers/utils';
 
 const emitter = new EventEmitter();
@@ -23,4 +23,4 @@ sleep(5000).then(() => {
 });
 
 // Resize function
-resizer(emitter);
+resizer({ emitter, ms: 300 });
