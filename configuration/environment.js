@@ -7,7 +7,7 @@ module.exports = {
     paths: {
         source: path.resolve(__dirname, '../src/'),
         output: path.resolve(__dirname, '../dist/'),
-        resources: path.resolve(__dirname, '../../resources/'),
+        views: path.resolve(__dirname, '../../resources/views/'),
         images: path.resolve(__dirname, '../src/images/'),
         fonts: path.resolve(__dirname, '../src/fonts/'),
     },
