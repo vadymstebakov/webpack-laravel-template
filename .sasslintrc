@@ -79,7 +79,7 @@ rules:
         - 4
         -
             size: 4
-    leading-zero: 2
+    leading-zero: 0
     nesting-depth: 0
     property-sort-order: 0
     pseudo-element: 2
