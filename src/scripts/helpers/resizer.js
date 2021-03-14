@@ -1,17 +1,15 @@
 import { debounce } from '@helpers/utils';
 
-const resized = emitter => {
-    return () => {
-        emitter.emit('page:resized', [document.documentElement.clientWidth, document.documentElement.clientHeight]);
-    };
+const resize = emitter => {
+    emitter.emit('page:resized', [document.documentElement.clientWidth, document.documentElement.clientHeight]);
 };
 
 export const resizer = options => {
-    const fn = debounce(resized(options.emitter), options.ms);
+    const debouncedResize = debounce(resize.bind(null, options.emitter), options.ms);
 
-    window.addEventListener('resize', fn, false);
+    window.addEventListener('resize', debouncedResize, false);
 
     return () => {
-        window.removeEventListener('resize', fn);
+        window.removeEventListener('resize', debouncedResize);
     };
 };

@@ -67,11 +67,9 @@ const optimization = () => {
 const putSVGSprite = () => {
     return new HTMLWebpackPlugin({
         filename: 'images/symbol-sprite/symbol-sprite.html',
-        template: './images/symbol-sprite/symbol-sprite.html',
+        template: path.resolve(environment.paths.images, 'symbol-sprite', 'symbol-sprite.html'),
         inject: false,
-        minify: {
-            collapseWhitespace: isProd || isStats,
-        },
+        minify: isProd || isStats,
     });
 };
 
@@ -147,10 +145,10 @@ const jsLoaders = () => {
 // Plugins
 const plugins = () => {
     const base = [
+        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: `styles/${filename('css')}`,
         }),
-        new CleanWebpackPlugin(),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery',
@@ -163,7 +161,7 @@ const plugins = () => {
                     force: true,
                     toType: 'dir',
                     globOptions: {
-                        ignore: ['*.DS_Store', 'Thumbs.db'],
+                        ignore: ['**/*.DS_Store', '**/Thumbs.db', '**/symbol-sprite/**'],
                     },
                 },
                 {
@@ -172,7 +170,7 @@ const plugins = () => {
                     force: true,
                     toType: 'dir',
                     globOptions: {
-                        ignore: ['*.DS_Store', 'Thumbs.db'],
+                        ignore: ['**/*.DS_Store', '**/Thumbs.db'],
                     },
                 },
             ],
@@ -181,7 +179,7 @@ const plugins = () => {
             disable: isDev,
             test: regexImages,
             pngquant: {
-                quality: '90-100',
+                quality: '60-100',
             },
         }),
         putSVGSprite(),
