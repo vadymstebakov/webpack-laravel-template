@@ -10,6 +10,7 @@ module.exports = {
         views: path.resolve(__dirname, '../../resources/views/'),
         images: path.resolve(__dirname, '../src/images/'),
         fonts: path.resolve(__dirname, '../src/fonts/'),
+        assetsPath: process.env.ASSET_PATH || '/public/dist/',
     },
     server: {
         proxy: 'http://hostName',

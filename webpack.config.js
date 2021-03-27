@@ -9,7 +9,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserWebpackPlugin = require('terser-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-const PhpManifestPlugin = require('webpack-php-manifest');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 const isProd = !isDev;
@@ -25,16 +25,17 @@ const optimization = () => {
         splitChunks: {
             chunks: 'all',
             cacheGroups: {
-                defaultVendors: {
+                vendors: {
                     test: /[\\/]node_modules[\\/]/,
                     priority: -10,
                     name: 'vendors',
-                    reuseExistingChunk: true,
+                    chunks: 'initial',
                 },
                 default: {
                     minChunks: 2,
                     priority: -20,
                     reuseExistingChunk: true,
+                    chunks: 'initial',
                 },
             },
         },
@@ -85,6 +86,7 @@ const styleLoaders = () => {
         {
             loader: 'css-loader',
             options: {
+                importLoaders: 2,
                 sourceMap: isDev,
             },
         },
@@ -183,14 +185,13 @@ const plugins = () => {
             },
         }),
         putSVGSprite(),
-        new PhpManifestPlugin({
-            // NOTE: Will write path to your 'dist' directory
-            path: 'public/dist',
-            phpClassName: 'PathsToFiles',
-            /* NOTE:
-                You have to replace your paths to files (namely this symbol "\"),
-                from "\" to "/" (use PHP method "str_replace")
-            */
+        new WebpackManifestPlugin({
+            filter: file => {
+                return /^(app|vendors)\.(js|css)$/.test(file.name);
+            },
+        }),
+        new webpack.DefinePlugin({
+            'process.env.ASSET_PATH': JSON.stringify(environment.paths.assetsPath),
         }),
     ];
 
@@ -203,16 +204,12 @@ const plugins = () => {
 module.exports = {
     context: environment.paths.source,
     entry: {
-        app: [
-            '@babel/polyfill',
-            'element-closest-polyfill',
-            path.resolve(environment.paths.source, 'scripts', 'index.js'),
-        ],
+        app: ['element-closest-polyfill', path.resolve(environment.paths.source, 'scripts', 'index.js')],
     },
     output: {
         filename: `scripts/${filename('js')}`,
         path: environment.paths.output,
-        publicPath: '',
+        publicPath: environment.paths.assetsPath,
     },
     optimization: optimization(),
     module: {
@@ -251,5 +248,5 @@ module.exports = {
             '@assets': path.resolve(__dirname, 'src/assets'),
         },
     },
-    target: 'web',
+    target: isProd ? 'browserslist' : 'web',
 };
