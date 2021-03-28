@@ -38,6 +38,27 @@
     }
 }
 
+// Indents
+$spaces: (5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 75, 100);
+$sides: (
+    "top": "t",
+    "right": "r",
+    "bottom": "b",
+    "left": "l",
+);
+
+@each $space in $spaces {
+    @each $side, $letter in $sides {
+        .m#{$letter}-#{$space} {
+            margin-#{$side}: #{$space}px;
+        }
+
+        .p#{$letter}-#{$space} {
+            padding-#{$side}: #{$space}px;
+        }
+    }
+}
+
 // mq max
 @mixin max-w-xs {
     @media (max-width: 479px) {
